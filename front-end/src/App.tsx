@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import ChatBot from "./pages/ChatBot";
 import Tasks from "./pages/Tasks";
-
+import BookFab from "./components/BookFab";
 export default function App() {
   return (
     <>
@@ -14,6 +14,7 @@ export default function App() {
         <Route path="/chatbot" element={<ChatBot />} />
         <Route path="/tasks" element={<Tasks />} />
       </Routes>
+      <BookFab to="/tasks" size={100} />
     </>
   );
 }

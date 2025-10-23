@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lottie-web": "^5.13.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-lottie": "^1.2.10",
     "react-router-dom": "^6"
   },
   "devDependencies": {
