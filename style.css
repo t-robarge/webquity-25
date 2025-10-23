@@ -1,0 +1,110 @@
+/*Design for the entire page*/
+body {
+    box-sizing: border-box;
+    background-color: bisque;
+    background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%);
+    margin: 0;
+    padding: 0;
+    font-family: 'Kosugi', sans-serif;
+}
+
+
+/* this is the aligment and color for the Logo bar*/
+.navbar {
+    background-size: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+
+/* Makes sure the navbar container is centered and */
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* Color and position of Logo*/
+#navbar__logo {
+    background-color: black;
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+/*Position for Navigation bar*/
+.navbar__menu{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    word-spacing: 100px;
+
+}
+
+/*Color for Navigation bar links*/
+.navbar__links{
+    text-decoration: none;
+    background-color: black;
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    
+}
+
+/**/
+.navbar__btn {
+    display: flex;
+    top: 50%;
+    left: 50%;
+    justify-content: right;
+    align-items: right;
+    padding: 25px;
+    width: 100%;
+}
+
+
+/**/
+.button {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    text-decoration: none;
+    padding: 20px;
+    height: 50%;
+    width: 50%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background-color: black;
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
