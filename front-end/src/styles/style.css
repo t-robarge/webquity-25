@@ -1,0 +1,137 @@
+/* === Page background (keep your original) === */
+body {
+  box-sizing: border-box;
+  background-color: bisque;
+  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%);
+  margin: 0;
+  padding: 0;
+  font-family: 'Kosugi', sans-serif;
+}
+
+/* === Navbar container matches page style, sits at top === */
+.navbar {
+  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%); /* match page */
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+
+/* Right-align content with comfy padding */
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;   /* push content to the right */
+  gap: 16px;
+  height: 80px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 50px;             /* right padding as requested */
+}
+
+/* Brand/logo — gradient text, NOT fixed/absolute */
+#navbar__logo {
+  font-size: 2rem;
+  text-decoration: none;
+  margin-right: auto;          /* logo on the left, menu pushed to right */
+  background: linear-gradient(to bottom, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: opacity 160ms ease;
+}
+#navbar__logo:hover { opacity: 0.8; }
+
+/* Horizontal menu on desktop */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Links — gradient text, *no dark bg* on hover */
+.navbar__links {
+  text-decoration: none;
+  background: linear-gradient(to bottom, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding: 6px 4px;            /* compact hit area */
+  border-radius: 8px;           /* for subtle active outline */
+  transition: transform 120ms ease, text-decoration-color 160ms ease, opacity 160ms ease;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(0,0,0,0); /* hidden until hover */
+}
+
+.navbar__links:hover {
+  text-decoration: underline;                 /* light, non-obscuring */
+  text-decoration-color: rgba(0,0,0,0.35);    /* subtle underline */
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.navbar__links.active {
+  outline: 1px solid rgba(0,0,0,0.15);        /* light active state */
+  outline-offset: 2px;
+}
+
+/* CTA button styled as gradient text too (consistent) */
+.button {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+  transition: transform 120ms ease, opacity 160ms ease;
+}
+.button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* Burger toggle hidden on desktop */
+.navbar__toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  cursor: pointer;
+}
+.navbar__toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px 0;
+  background: #333; /* visible over light bg */
+  opacity: 0.9;
+}
+
+/* Mobile menu: stacked dropdown aligned to right */
+@media (max-width: 768px) {
+  .navbar__container { justify-content: space-between; }
+  .navbar__toggle { display: block; }
+
+  .navbar__menu {
+    position: absolute;
+    right: 50px;
+    top: 80px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(250, 243, 224, 0.95); /* light, matches page */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .navbar__menu.navbar__menu--open { display: flex; }
+}
