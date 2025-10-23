@@ -1,0 +1,42 @@
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Vite / build outputs
+dist/
+dist-ssr/
+.vite/
+.vite-inspect/
+
+# TypeScript
+*.tsbuildinfo
+
+# Env files (keep secrets out of git)
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+Thumbs.db
+
+# Testing / coverage
+coverage/
+*.coverage
+*.lcov
+
+# Misc tools
+.eslintcache
+.stylelintcache
+.turbo/
