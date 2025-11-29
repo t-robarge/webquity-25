@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "../../styles/chat.css";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type Msg = { id: string; role: "user" | "assistant"; text: string };
 
@@ -142,8 +144,10 @@ export default function ChatWidget() {
             <div className="chat-messages" role="log" aria-live="polite">
               {msgs.map((m) => (
                 <div key={m.id} className={`chat-bubble ${m.role}`}>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {m.text}
-                </div>
+                </ReactMarkdown>
+              </div>
               ))}
             </div>
 

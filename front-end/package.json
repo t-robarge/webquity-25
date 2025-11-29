@@ -13,7 +13,9 @@
     "react": "^18",
     "react-dom": "^18",
     "react-lottie": "^1.2.10",
-    "react-router-dom": "^6"
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^6",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@types/react": "^18",
