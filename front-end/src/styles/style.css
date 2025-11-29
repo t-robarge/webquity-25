@@ -1,8 +1,8 @@
 /* === Page background (keep your original) === */
 body {
   box-sizing: border-box;
-  background-color: bisque;
-  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%);
+  background-color: D0E4F7;
+  background: linear-gradient(to right, #faf3e0 0%, D0E4F7 100%);
   margin: 0;
   padding: 0;
   font-family: 'Kosugi', sans-serif;
@@ -10,7 +10,7 @@ body {
 
 /* === Navbar container matches page style, sits at top === */
 .navbar {
-  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%); /* match page */
+  background: linear-gradient(to right, #faf3e0 0%, D0E4F7 100%); /* match page */
   height: 80px;
   position: sticky;
   top: 0;
