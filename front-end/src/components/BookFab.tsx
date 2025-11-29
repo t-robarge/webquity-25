@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Lottie from "react-lottie";
-import "./BookFab.css";
+import "../styles/book-fab.css";
 
 import ClosedBook from "../assets/icons/Closed_Book_Static.png";
 import BookOpenAnim from "../assets/animations/BookOpen.json";
