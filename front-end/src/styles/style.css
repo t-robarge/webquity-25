@@ -1,8 +1,8 @@
 /* === Page background (keep your original) === */
 body {
   box-sizing: border-box;
-  background-color: D0E4F7;
-  background: linear-gradient(to right, #faf3e0 0%, D0E4F7 100%);
+  background-color: #d0e4f7;
+  background: linear-gradient(to right, #d0e4f7 0%, #d0e4f7 100%);
   margin: 0;
   padding: 0;
   font-family: 'Kosugi', sans-serif;
@@ -10,7 +10,7 @@ body {
 
 /* === Navbar container matches page style, sits at top === */
 .navbar {
-  background: linear-gradient(to right, #faf3e0 0%, D0E4F7 100%); /* match page */
+  background: linear-gradient(to right, #d0e4f7 0%, #d0e4f7 100%); /* match page */
   height: 80px;
   position: sticky;
   top: 0;
@@ -134,4 +134,30 @@ body {
     box-shadow: 0 8px 24px rgba(0,0,0,0.15);
   }
   .navbar__menu.navbar__menu--open { display: flex; }
+}
+
+.page {
+  min-height: calc(100vh - 80px); /* full viewport minus navbar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  max-width: 800px;
+} 
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to bottom, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+  -webkit-background-clip:text;
+  color: transparent
+}
+.hero p {
+  font-size: 1.25rem;
+  color: #333;
+  opacity: 0.8;
 }
