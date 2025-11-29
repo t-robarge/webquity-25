@@ -1,0 +1,38 @@
+.book-fab {
+  position: fixed;
+  right: 24px;                 /* can be overridden inline */
+  bottom: 24px;                /* can be overridden inline */
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%); /* match your page */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  display: grid;
+  place-items: center;
+  transition: transform 120ms ease, box-shadow 160ms ease;
+  z-index: 1000;
+}
+
+.book-fab:hover {              /* no visual “open” on hover, just a tiny lift */
+  transform: translateY(-1px);
+  box-shadow: 0 9px 24px rgba(0,0,0,0.22);
+}
+
+.book-fab:active { transform: translateY(0) scale(0.98); }
+
+.book-fab:focus-visible {
+  outline: 3px solid rgba(0,0,0,0.35);
+  outline-offset: 3px;
+}
+
+.book-fab__img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+body.chat-open .book-fab {
+  display: none !important;
+}

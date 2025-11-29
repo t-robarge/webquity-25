@@ -1,0 +1,127 @@
+/* Floating Chat button (sits above your BookFab: +72px from bottom) */
+.chat-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;              /* BookFab at 24px bottom? This stacks above it */
+  z-index: 1000;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%); /* match site */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transition: transform 120ms ease, box-shadow 160ms ease;
+}
+.chat-fab:hover { transform: translateY(-1px); box-shadow: 0 9px 24px rgba(0,0,0,0.22); }
+.chat-fab:active { transform: translateY(0) scale(0.98); }
+.chat-fab:focus-visible { outline: 3px solid rgba(0,0,0,0.35); outline-offset: 2px; }
+
+/* Full-screen overlay to catch outside clicks (transparent) */
+.chat-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999; /* under the panel, over content */
+}
+
+/* Slide-in panel on the right */
+.chat-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: min(420px, 100vw);
+  background: #fff;
+  box-shadow: -12px 0 32px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  animation: chat-slide-in 160ms ease-out;
+  border-left: 1px solid rgba(0,0,0,0.06);
+}
+
+@keyframes chat-slide-in {
+  from { transform: translateX(8px); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%); /* match site */
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.chat-close {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.chat-close:hover { opacity: 1; }
+
+.chat-messages {
+  padding: 12px 14px;
+  overflow: auto;
+  background: #fff;
+}
+
+.chat-bubble {
+  max-width: 85%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  word-wrap: break-word;
+}
+
+.chat-bubble.assistant {
+  background: #f4efe4;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.chat-bubble.user {
+  margin-left: auto;
+  background: #f8f1df;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.chat-inputrow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  background: #fff;
+}
+
+.chat-input {
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.chat-send {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+.chat-send:hover { filter: brightness(0.98); }
+/* Also hide the chat's own FAB while the panel is open (defensive) */
+body.chat-open .chat-fab {
+  display: none !important;
+}
+
+/* Ensure the chat panel sits above everything */
+.chat-overlay,
+.chat-panel {
+  z-index: 2000; /* higher than your FABs' z-index */
+}
