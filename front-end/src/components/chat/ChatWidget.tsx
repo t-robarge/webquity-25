@@ -1,16 +1,20 @@
-import { useEffect, useRef, useState, lazy, Suspense } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import "@/styles/chat.css";
+import "../../styles/chat.css";
 
 type Msg = { id: string; role: "user" | "assistant"; text: string };
 
+// TODO: set this to your real backend endpoint
+const API_ENDPOINT = "http://localhost:5001/api/chat";
+
 export default function ChatWidget() {
-    
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState<Msg[]>([
     { id: "m1", role: "assistant", text: "Hi! How can I help?" },
   ]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const inputRef = useRef<HTMLInputElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
 
@@ -40,33 +44,64 @@ export default function ChatWidget() {
     return () => document.removeEventListener("mousedown", onClick);
   }, [open]);
 
-  const send = (e?: React.FormEvent) => {
-    e?.preventDefault();
-    const text = input.trim();
-    if (!text) return;
-    const newUser: Msg = { id: crypto.randomUUID(), role: "user", text };
-    setMsgs((m) => [...m, newUser]);
-    setInput("");
-
-    // TODO: wire your chat backend here.
-    // For now, echo a placeholder response.
-    setTimeout(() => {
-      setMsgs((m) => [
-        ...m,
-        { id: crypto.randomUUID(), role: "assistant", text: "Got it! (stubbed)" },
-      ]);
-    }, 400);
-  };
+  // Body class toggle when chat is open
   useEffect(() => {
     if (open) {
       document.body.classList.add("chat-open");
     } else {
       document.body.classList.remove("chat-open");
     }
-    // Cleanup just in case the component unmounts while open
     return () => document.body.classList.remove("chat-open");
   }, [open]);
-  
+
+  const send = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    const text = input.trim();
+    if (!text || loading) return;
+
+    const userMsg: Msg = { id: crypto.randomUUID(), role: "user", text };
+    setMsgs((prev) => [...prev, userMsg]);
+    setInput("");
+    setLoading(true);
+
+    try {
+      // Call your backend
+      const res = await fetch(API_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Request failed with status ${res.status}`);
+      }
+
+      const data = await res.json();
+
+      // Adjust this based on your API response shape
+      const replyText: string =
+        data.reply ?? data.message ?? "Sorry, I couldn't parse the response.";
+
+      const assistantMsg: Msg = {
+        id: crypto.randomUUID(),
+        role: "assistant",
+        text: replyText,
+      };
+
+      setMsgs((prev) => [...prev, assistantMsg]);
+    } catch (err) {
+      console.error("Chat API error:", err);
+      const errorMsg: Msg = {
+        id: crypto.randomUUID(),
+        role: "assistant",
+        text: "Sorry, something went wrong talking to the server.",
+      };
+      setMsgs((prev) => [...prev, errorMsg]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Floating button (bottom-right, above BookFab)
   const fab = !open ? (
     <button
@@ -95,7 +130,13 @@ export default function ChatWidget() {
           >
             <header className="chat-header">
               <strong>Chat</strong>
-              <button className="chat-close" onClick={() => setOpen(false)} aria-label="Close chat">×</button>
+              <button
+                className="chat-close"
+                onClick={() => setOpen(false)}
+                aria-label="Close chat"
+              >
+                ×
+              </button>
             </header>
 
             <div className="chat-messages" role="log" aria-live="polite">
@@ -114,15 +155,17 @@ export default function ChatWidget() {
                 placeholder="Type a message…"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                disabled={loading}
               />
-              <button className="chat-send" type="submit">Send</button>
+              <button className="chat-send" type="submit" disabled={loading}>
+                {loading ? "..." : "Send"}
+              </button>
             </form>
           </section>
         </div>,
         document.body
       )
     : null;
-    
 
   return (
     <>

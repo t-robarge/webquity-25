@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import ChatBot from "./pages/ChatBot";
 import Tasks from "./pages/Tasks";
 import BookFab from "./components/BookFab";
+import ChatWidget from "./components/chat/ChatWidget";
 export default function App() {
   return (
     <>
@@ -14,7 +15,8 @@ export default function App() {
         <Route path="/chatbot" element={<ChatBot />} />
         <Route path="/tasks" element={<Tasks />} />
       </Routes>
-      <BookFab to="/tasks" size={100} />
+      <BookFab to="/tasks" size={50} />
+      <ChatWidget />
     </>
   );
 }
