@@ -9,7 +9,7 @@ export default function Navbar() {
       <div className="navbar__container">
         {/* Keep a brand; it will sit at the far right along with the links due to flex-end */}
         <Link to="/" id="navbar__logo" onClick={() => setOpen(false)}>
-          Webiquity
+          Webquity
         </Link>
 
         {/* Mobile burger */}
