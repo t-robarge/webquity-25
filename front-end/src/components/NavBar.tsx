@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav className="navbar" role="navigation" aria-label="Main">
       <div className="navbar__container">
-        {/* Keep a brand; it will sit at the far right along with the links due to flex-end */}
+        {/* Brand Logo */}
         <Link to="/" id="navbar__logo" onClick={() => setOpen(false)}>
           Webquity
         </Link>
@@ -25,6 +25,7 @@ export default function Navbar() {
         </button>
 
         <ul className={`navbar__menu ${open ? "navbar__menu--open" : ""}`}>
+          {/* Home Link */}
           <li>
             <NavLink
               to="/"
@@ -37,17 +38,8 @@ export default function Navbar() {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/chatbot"
-              className={({ isActive }) =>
-                `navbar__links${isActive ? " active" : ""}`
-              }
-              onClick={() => setOpen(false)}
-            >
-              ChatBot
-            </NavLink>
-          </li>
+
+          {/* Tasks Link */}
           <li>
             <NavLink
               to="/tasks"
@@ -59,10 +51,25 @@ export default function Navbar() {
               Tasks
             </NavLink>
           </li>
+
+          {/* Sign Up Button */}
           <li className="navbar__btn">
-            <Link to="/" className="button" onClick={() => setOpen(false)}>
+            <Link to="" className="button" onClick={() => setOpen(false)}>
               Sign Up
             </Link>
+          </li>
+
+          {/* Login Button */}
+          <li className="navbar__btn">
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                `navbar__links${isActive ? " active" : ""}`
+              }
+              onClick={() => setOpen(false)}
+            >
+              Login
+            </NavLink>
           </li>
         </ul>
       </div>
