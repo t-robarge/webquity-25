@@ -1,0 +1,121 @@
+
+/* Full page container centered and slightly higher */
+.login-main-container {
+  min-height: calc(100vh - 80px); /* full viewport minus navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #d0e4f7;
+  background: linear-gradient(to right, #d0e4f7 0%, #d0e4f7 100%);
+  font-family: 'Kosugi', sans-serif;
+  transform: translateY(-10vh); /* moves content slightly higher */
+}
+
+/* Page heading */
+.login-main-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to bottom, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Subheading / instructions */
+.login-main-container p {
+  font-size: 1.25rem;
+  color: #333;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+/* Form container */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;           /* space between inputs */
+  width: 300px;         /* fixed form width */
+  max-width: 90%;       /* responsive on smaller screens */
+}
+
+/* Labels */
+.login-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #333;
+  opacity: 0.85;
+  text-align: left;
+}
+
+/* Inputs */
+.login-form input {
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 120ms ease, box-shadow 120ms ease;
+}
+
+.login-form input:focus {
+  border-color: #666;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+/* Buttons container (for main login buttons) */
+.login-buttons {
+  display: flex;
+  flex-direction: column; /* stacked vertically */
+  gap: 16px;
+  margin-top: 8px;
+}
+
+/* Buttons */
+.login-form .button,
+.login-buttons .button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #ffffff;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 120ms ease, opacity 160ms ease, box-shadow 120ms ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Button hover effect */
+.login-form .button:hover,
+.login-buttons .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  opacity: 0.95;
+}
+
+/* Button active effect */
+.login-form .button:active,
+.login-buttons .button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login-main-container h1 {
+    font-size: 2.25rem;
+  }
+
+  .login-main-container p {
+    font-size: 1rem;
+  }
+
+  .login-form {
+    width: 90%;
+  }
+}
