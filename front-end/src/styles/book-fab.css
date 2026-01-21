@@ -6,7 +6,7 @@
   border-radius: 50%;
   padding: 0;
   cursor: pointer;
-  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%); /* match your page */
+  background: linear-gradient(to right, #faf3e0 0%, #e4cda7 100%); /* match page */
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   display: grid;
   place-items: center;

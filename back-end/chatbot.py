@@ -3,7 +3,7 @@ from flask_cors import CORS
 import ollama
 
 app = Flask(__name__)
-CORS(app)  # allows your React app (different port) to call this API
+CORS(app)  # allows React app (different port) to call this API
 
 # Initialize the Ollama client once
 client = ollama.Client()
